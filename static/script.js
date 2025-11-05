@@ -1,0 +1,97 @@
+function validarNome(nome) {
+  if (nome.length < 3) {
+    return false;
+  }
+  return true;
+}
+
+function validarCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g, ''); // remove pontos e traços
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+  let soma = 0, resto;
+
+  for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+  return true;
+}
+
+function validarSenha(senha) {
+  if (senha.length < 8) {
+    return false;
+  }
+  return true;
+}
+
+function validarEmail(email) {
+  let padrao = /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return padrao.test(email);
+}
+
+function validarDataNascimento(nascimento) {
+  let hoje = new Date();
+  nascimento = new Date(nascimento);
+  if (nascimento.getTime() >= hoje.getTime()) {
+    return false;
+  }
+  return true;
+}
+
+const form = document.querySelector("#formCadastro");
+let enviado = false;
+let avisos = document.querySelector(".avisos");
+
+form.addEventListener("submit", (e) => {
+  if (enviado) return;
+  e.preventDefault();
+  let msgs = [];
+  let erros = 0;
+
+  enviado = false
+  let nome = document.querySelector(".nome").value;
+  let cpf = document.querySelector(".cpf").value;
+  let senha = document.querySelector(".senha").value;
+  let email = document.querySelector(".email").value;
+  let nascimento = document.querySelector(".nascimento").value;
+
+  if (!validarNome(nome)) {
+    msgs.push("Nome precisa ter no minímo 3 letras");
+    erros++;
+  }
+  if (!validarEmail(email)) {
+    msgs.push("Email inválido");
+    erros++;
+  }
+  if (!validarCPF(cpf)) {
+    msgs.push("CPF inválido");
+    erros++;
+  }
+  if (!validarDataNascimento(nascimento)) {
+    msgs.push("data de nascimento inválida");
+    erros++
+  }
+  if (!validarSenha(senha)) {
+    msgs.push("senha precisa ter no minímo 8 digitos");
+    erros++;
+  }
+
+  if (erros === 0) {
+    enviado = true;
+    form.submit();
+  }
+
+  avisos.innerHTML = ""
+  msgs.forEach(msg => {
+    avisos.innerHTML += `<li>${msg}</li>`;
+  });
+}
+);

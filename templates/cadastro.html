@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Usuário</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+  <h2>Cadastro de Usuário</h2>
+  <form id="formCadastro" method="POST" action="/cadastrar">
+    <label>Nome:
+      <input class="nome" type="text" name="nome" required>
+    </label>
+
+    <label>Email:
+      <input class="email" type="email" name="email" required>
+    </label>
+
+    <label>CPF:
+      <input class="cpf" type="text" name="cpf" required>
+    </label>
+
+    <label>nascimento:
+      <input class="nascimento" type="date" name="nascimento" required>
+    </label>
+
+    <label>Senha:
+      <input class="senha" type="password" name="senha" required>
+    </label>
+
+    <input id="submit" type="submit" value="enviar">
+
+  </form>
+
+  <ul class="avisos"></ul>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
