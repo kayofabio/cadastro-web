@@ -1,3 +1,14 @@
+:root {
+  --pattern: #fff;
+  --pattern-2: #000;
+
+  --bg: #9DCDD4;
+  --bg-2: #579ED4;
+  --border: #57D4B9;
+  --erro: #f00;
+  --sucess: #57D48E;
+}
+
 body {
   font-family: Arial;
   background: #f7f7f7;
