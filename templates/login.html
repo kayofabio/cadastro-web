@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <section class="container">
+
+        <div class="esquerda">
+            <h1>Biblioteca dahora</h1>
+        </div>
+        <div class="direita">
+            <h2>Faça o login</h2>
+            <form id="formCadastro" method="POST" action="/login">
+                <label>Email:
+                    <input class="email" type="email" name="email" placeholder="exemplo@gmail.com">
+                </label>
+                <label>Senha:
+                    <input class="senha" type="password" placeholder="senhaboa" name="senha">
+                </label>
+                <input id="submit" type="submit" value="enviar">
+
+                <p>Não tem cadastro? Faça o <a href="/"><strong>cadastrado</strong></a></p>
+            </form>
+            <ul class="avisos"></ul>
+        </div>
+    </section>
+    <script src="{{url_for('static', filename='script2.js')}}"></script>
+</body>
+
+</html>

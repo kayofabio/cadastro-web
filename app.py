@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3, os
 from werkzeug.security import generate_password_hash, check_password_hash
 from cryptography import fernet
@@ -34,6 +34,7 @@ def validar_dados_usuario():
 
 @app.route("/")
 def homePage():
+    session.clear()
     return render_template("cadastro.html")
 
 @app.route("/cadastrar", methods=["POST"])
@@ -63,10 +64,48 @@ def cadastrar():
 
     return redirect(url_for("confirmacao", nome=usuario["nome"]))
 
-@app.route("/confirmacao", )
+@app.route("/confirmacao")
 def confirmacao():
     nome = request.args.get("nome")
     return render_template("confirmacao.html", nome=nome)
+
+def get_db():
+    return sqlite3.connect(os.getenv("DATABASE_PATH", "database.db"))
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        senha = request.form["senha"]
+
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT id, nome, senha FROM usuarios WHERE email = ?", (email,))
+        user = cursor.fetchone()
+        db.close()
+
+        if user and check_password_hash(user[2], senha):
+            session["user_id"] = user[0]
+            session["user_nome"] = user[1]
+            flash("Login realizado com sucesso!", "success")
+            return redirect(url_for("home"))
+        else:
+            flash("CPF ou senha incorretos.", "danger")
+
+    return render_template("login.html")
+
+@app.route("/home")
+def home():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    nome = session.get("user_nome")
+    return render_template("home.html", nome=nome)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("Você saiu da conta com sucesso!", "info")
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=os.getenv("FLASK_DEBUG") == "True")

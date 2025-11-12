@@ -13,12 +13,7 @@ body {
   background-color: var(--border);
 }
 
-.confirmacao {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.confirmacao a {
+a {
   display: inline-block;
   margin-top: 20px;
   text-decoration: none;

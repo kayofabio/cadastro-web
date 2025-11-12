@@ -26,10 +26,6 @@ html {
   font-family: 'Crimson Text', sans-serif;
 }
 
-body {
-  background-color: var(--pattern);
-}
-
 h1 {
   color: var(--border);
   background-color: var(--bg-2);
@@ -108,6 +104,11 @@ input {
   width: 80px;
   margin: auto;
   margin-top: 20px;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 ul {
