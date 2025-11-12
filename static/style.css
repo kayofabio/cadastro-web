@@ -32,13 +32,15 @@ h1 {
   font-size: 34px;
   width: 100%;
   border-bottom: 2px solid var(--border);
-  padding-left : 4px;
+  padding-left: 4px;
   text-shadow: 2px 2px 4px var(--pattern-2);
 }
+
 h2 {
   text-align: center;
   margin-bottom: 16px;
 }
+
 .container {
   display: flex;
   height: 100vh;
@@ -113,4 +115,19 @@ p {
 
 ul {
   margin: 16px;
+}
+
+@media (max-width: 800px) {
+  .esquerda {
+    display: none;
+  }
+
+  .container {
+    background-image: url('imgs/bg-2.png');
+  }
+  
+  form {
+    width: 300px;
+    font-size: 16px;
+  }
 }
