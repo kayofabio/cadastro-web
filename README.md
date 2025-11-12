@@ -23,6 +23,7 @@ RNF002: O back-end deve ser feito em python, utilizando flask.
 RNF003: O sistema deve armazenar o usuário cadastrado no BD SQLite.  
 RNF004: O sistema deve ser seguro.  
 RNF005: O sistema de ser de fácil uso.  
+RNF006: O sistema deve ser responsivo.  
 
 # Diagrama Entidade Relacional:
 ![diagrama DER](imgs/der.png)
