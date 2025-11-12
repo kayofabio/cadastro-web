@@ -1,0 +1,15 @@
+
+# Arquivos sensíveis
+.env
+
+# Banco de dados local
+*.db
+
+# Cache do Python
+# __pycache__/
+# *.pyc
+# *.pyo
+# *.pyd
+
+# Virtualenv
+venv/
