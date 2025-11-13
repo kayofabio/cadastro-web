@@ -24,7 +24,7 @@ RF008: O sistema deve criptografar dados sensíveis (CPF e senha) antes de cadas
 Requisitos não funcionais:  
 RNF001: O front-end deve ser desenvolvido com HTML5, CSS3 e JavaScript.  
 RNF002: O back-end deve ser desenvolvido em Python, utilizando o framework Flask.  
-RNF003: O sistema deve utilizar o banco de dados SQLite para armazenamento local. 
+RNF003: O sistema deve utilizar o banco de dados SQLite para armazenamento local.  
 RNF004: O sistema deve armazenar o CPF no BD de forma criptografada com uma chave para criptografia e descriptografia.  
 RNF005: O sistema deve armazenar a senha no BD de forma criptografada, utilizando hash.     
 RNF006: O sistema deve utilizar a biblioteca python-dotenv para para leitura de variáveis de ambiente.  
