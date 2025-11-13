@@ -12,15 +12,15 @@ cryptography.fernet, python-dotenv, os e sqlite3: bibliotecas utilizadas para ac
 
 # Requisitos do sistema
 Requisitos funcionais:  
-RF001: O sistema deve permitir o cadastro de novos usuários com as informações: nome, e-mail, telefone, CPF, data de nascimente e senha.
-RF002: O sistema deve validar os dados informados pelo usuário antes de cadastrar-lo.
-RF003: O sistema deve exibir mensagens de erro caso o formulário seja preenchido incorretamente.
-RF004: O sistema deve exibir uma confirmação de sucesso após o cadastro ser realizado.
-RF005: O sistema deve permitir que o usuário realize login com e-mail e senha.
-RF006: O sistema deve impedir o acesso a páginas restritas sem que o usuário esteja autenticado.
-RF007: O sistema deve permitir que o usuário encerre sua sessão. Fazer logout.
-RF008: O sistema deve criptografar o CPF antes de armazenar no banco de dados.
-RF009: O sistema deve armazenar a senha de forma irreversível, utilizando hash. 
+RF001: O sistema deve permitir o cadastro de novos usuários com as informações: nome, e-mail, telefone, CPF, data de nascimente e senha.  
+RF002: O sistema deve validar os dados informados pelo usuário antes de cadastrar-lo.  
+RF003: O sistema deve exibir mensagens de erro caso o formulário seja preenchido incorretamente.  
+RF004: O sistema deve exibir uma confirmação de sucesso após o cadastro ser realizado.  
+RF005: O sistema deve permitir que o usuário realize login com e-mail e senha.  
+RF006: O sistema deve impedir o acesso a páginas restritas sem que o usuário esteja autenticado.  
+RF007: O sistema deve permitir que o usuário encerre sua sessão. Fazer logout.  
+RF008: O sistema deve criptografar o CPF antes de armazenar no banco de dados.  
+RF009: O sistema deve armazenar a senha de forma irreversível, utilizando hash.  
 
 Requisitos não funcionais:  
 RNF001: O front-end deve ser desenvolvido com HTML5, CSS3 e JavaScript.  
