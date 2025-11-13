@@ -19,15 +19,14 @@ RF004: O sistema deve exibir uma confirmação de sucesso após o cadastro ser r
 RF005: O sistema deve permitir que o usuário realize login com e-mail e senha.  
 RF006: O sistema deve impedir o acesso a páginas restritas sem que o usuário esteja autenticado.  
 RF007: O sistema deve permitir que o usuário encerre sua sessão. Fazer logout.  
-RF008: O sistema deve criptografar o CPF antes de armazenar no banco de dados.  
-RF009: O sistema deve armazenar a senha de forma irreversível, utilizando hash.  
+RF008: O sistema deve criptografar dados sensíveis (CPF e senha) antes de cadastrar o usuário.  
 
 Requisitos não funcionais:  
 RNF001: O front-end deve ser desenvolvido com HTML5, CSS3 e JavaScript.  
 RNF002: O back-end deve ser desenvolvido em Python, utilizando o framework Flask.  
-RNF003: O sistema deve utilizar o banco de dados SQLite para armazenamento local.  
-RNF004: O sistema deve utilizar werkzeug.security para para geração e verificação de hash de senhas.  
-RNF005: O sistema deve utilizar a biblioteca cryptography.fernet para criptografia de CPFs.  
+RNF003: O sistema deve utilizar o banco de dados SQLite para armazenamento local. 
+RNF004: O sistema deve armazenar o CPF no BD de forma criptografada com uma chave para criptografia e descriptografia.  
+RNF005: O sistema deve armazenar a senha no BD de forma criptografada, utilizando hash.     
 RNF006: O sistema deve utilizar a biblioteca python-dotenv para para leitura de variáveis de ambiente.  
 RNF007: O sistema deve utilizar a biblioteca os para acesso seguro a variáveis do sistema.  
 RNF008: O sistema deve utilizar a biblioteca sqlite3 para fazer a conexão com o banco de dados.  
@@ -36,7 +35,7 @@ RNF010: O sistema deve utilizar sessão para manter o estado do login do usuári
 RNF011: O sistema deve ser seguro contra vazamento de dados sensíveis.  
 RNF012: O sistema deve ser de fácil uso e ter interface intuitiva.  
 RNF013: O sistema deve ser responsivo, adaptando-se a diferentes tamanhos de tela.  
-RNF014: O sistema deve ser hospedável em serviços gratuitos como Render, Vercel e Netlify.  
+RNF014: O sistema deve ser hospedado em serviços gratuitos como Render, Vercel e Netlify.  
 
 # Diagrama Entidade Relacional:
 ![diagrama DER](static/imgs/der.png)

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3, os
 from werkzeug.security import generate_password_hash, check_password_hash
 from cryptography import fernet
@@ -34,7 +34,6 @@ def validar_dados_usuario():
 
 @app.route("/")
 def homePage():
-    session.clear()
     return render_template("cadastro.html")
 
 @app.route("/cadastrar", methods=["POST"])
@@ -53,7 +52,7 @@ def cadastrar():
         "senha": senha_hash
     }
 
-    conn = sqlite3.connect(DATABASE_PATH)
+    conn = get_bd()
     cursor = conn.cursor()
     cursor.execute('''
                    INSERT INTO usuarios (id, nome, email, telefone, cpf, data_nascimento, senha)
@@ -69,8 +68,8 @@ def confirmacao():
     nome = request.args.get("nome")
     return render_template("confirmacao.html", nome=nome)
 
-def get_db():
-    return sqlite3.connect(os.getenv("DATABASE_PATH", "database.db"))
+def get_bd():
+    return sqlite3.connect(os.getenv("DATABASE_PATH", "meubd.db"))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -78,19 +77,17 @@ def login():
         email = request.form["email"]
         senha = request.form["senha"]
 
-        db = get_db()
-        cursor = db.cursor()
+        conn = get_bd()
+        cursor = conn.cursor()
         cursor.execute("SELECT id, nome, senha FROM usuarios WHERE email = ?", (email,))
         user = cursor.fetchone()
-        db.close()
+        conn.close()
 
         if user and check_password_hash(user[2], senha):
+            session.clear()
             session["user_id"] = user[0]
             session["user_nome"] = user[1]
-            flash("Login realizado com sucesso!", "success")
             return redirect(url_for("home"))
-        else:
-            flash("CPF ou senha incorretos.", "danger")
 
     return render_template("login.html")
 
@@ -104,7 +101,6 @@ def home():
 @app.route("/logout")
 def logout():
     session.clear()
-    flash("Você saiu da conta com sucesso!", "info")
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
