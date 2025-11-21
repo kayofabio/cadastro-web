@@ -38,10 +38,10 @@ RNF013: O sistema deve ser responsivo, adaptando-se a diferentes tamanhos de tel
 RNF014: O sistema deve ser hospedado em serviços gratuitos como Render, Vercel e Netlify.  
 
 # Diagrama Entidade Relacional:
-![diagrama DER](static/imgs/der.png)
+![diagrama DER](static/imgs/der-diagram.png)
 
 # Diagrama de caso de uso:
-![Diagrama de caso de uso](static/imgs/casos-de-uso.png)
+![Diagrama de caso de uso](static/imgs/casos-de-uso-diagram.png)
 
 # dados salvos no BD:
 ![database](static/imgs/database-img.png)
